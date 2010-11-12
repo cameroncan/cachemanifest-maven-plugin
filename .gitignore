@@ -1,0 +1,5 @@
+target/*
+.classpath
+.project
+.settings/*
+deploy_to_artifactory.sh
