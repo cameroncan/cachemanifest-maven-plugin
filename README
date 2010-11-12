@@ -19,7 +19,7 @@ Cantina doesn't have a public artifactory yet - to use it, you'll need to:
             <plugin>
                 <groupId>co.cantina.maven</groupId>
                 <artifactId>cachemanifest-maven-plugin</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.0</version>
                 <configuration>
                     <manifestVersion>1</manifestVersion>
                     <inputDirectory>${basedir}/src/main/webapp</inputDirectory>
