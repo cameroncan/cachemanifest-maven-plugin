@@ -1,0 +1,51 @@
+name: Cache Manifest Maven Plugin
+groupId: co.cantina.maven
+artifactId: cachemanifest-maven-plugin
+author: Glenn Barnett <glenn@cantinaconsulting.com>
+
+This Maven plugin generates an HTML5 Cache Manifest as per http://www.whatwg.org/specs/web-apps/current-work/multipage/offline.html#manifests
+
+Cantina doesn't have a public artifactory yet - to use it, you'll need to:
+
+1.) run mvn install to generate the artifact
+
+2.) (optional) deploy it to your local artifactory
+
+3.) add it into your project's pom.xml:
+
+    <build>
+        <plugins>
+            <!-- ... -->
+            <plugin>
+                <groupId>co.cantina.maven</groupId>
+                <artifactId>cachemanifest-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <configuration>
+                    <manifestVersion>1</manifestVersion>
+                    <inputDirectory>${basedir}/src/main/webapp</inputDirectory>
+                    <outputManifestFile>${basedir}/src/main/webapp/cache.manifest</outputManifestFile>
+                    <excludes>
+                        <exclude>WEB-INF/**</exclude>
+                        <exclude>**/*.manifest</exclude>
+                    </excludes>
+                    <networkResources>
+                        <!-- whitelist all non-cached references to allow Web services access -->
+                        <networkResource>*</networkResource>
+                    </networkResources>
+                    <fallback>/index.html /index.html</fallback>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>generate-manifest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- ... -->
+        </plugins>
+    </build>
+
+This is our first plugin release, so feedback is welcome if there are additional conventions we should be following or improvements that we should make.
+
