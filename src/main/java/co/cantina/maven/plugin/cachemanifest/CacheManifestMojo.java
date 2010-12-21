@@ -36,13 +36,13 @@ public class CacheManifestMojo extends AbstractMojo {
 	 */
 	private File outputManifestFile;
 
-    /**
-     * The directory to iterate over.
-     *
-     * @required
+	/**
+	 * The directory to iterate over.
+	 *
+	 * @required
 	 * @parameter
-     */
-    private File inputDirectory;
+	 */
+	private File inputDirectory;
 
 	/**
 	 * An optional version number; used to indicate to clients (via a difference in file) that they should refresh all resources
@@ -126,8 +126,8 @@ public class CacheManifestMojo extends AbstractMojo {
 				w.write("# WARNING: No files matched provided include/exclude patterns\n");
 				getLog().warn("No files matched provided include/exclude patterns");
 			} else {
-			    // NOTE: the CACHE: header is only required if it comes AFTER a different section.
-			    // if it is present in the first section, it actually breaks the caching functionality.
+				// NOTE: the CACHE: header is only required if it comes AFTER a different section.
+				// if it is present in the first section, it actually breaks the caching functionality.
 				//w.write("\nCACHE:\n");
 			}
 
