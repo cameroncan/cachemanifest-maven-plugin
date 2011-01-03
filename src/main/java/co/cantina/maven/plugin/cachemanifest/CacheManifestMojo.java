@@ -45,14 +45,16 @@ public class CacheManifestMojo extends AbstractMojo {
 	private File inputDirectory;
 
 	/**
-	 * An optional version number; used to indicate to clients (via a difference in file) that they should refresh all resources
+	 * An optional version number; used to indicate to clients (via a 
+	 * difference in file) that they should refresh all resources
 	 * 
 	 * @parameter
 	 */
 	private String manifestVersion;
 
 	/**
-	 * A list of inclusion filters for the manifest.  If none are provided, will use all files.
+	 * A list of inclusion filters for the manifest.  If none are provided,
+	 * will use all files.
 	 * 
 	 * @parameter
 	 */
@@ -66,8 +68,9 @@ public class CacheManifestMojo extends AbstractMojo {
 	private Set<String> excludes = new HashSet<String>();
 	
 	/**
-	 * A list of resources that should be prepended by the NETWORK: token, implying that these resources should always be
-	 * served over the network (never cached).
+	 * A list of resources that should be prepended by the NETWORK: token,
+	 * implying that these resources should always be served over the 
+	 * network (never cached).
 	 * 
 	 * @parameter
 	 */
@@ -93,7 +96,7 @@ public class CacheManifestMojo extends AbstractMojo {
 		
 		SourceInclusionScanner scanner = new SimpleSourceInclusionScanner(includes, excludes);
 
-		// Note: we shouldn't have to do this but this is a limitation of the Plexus SimpleSourceInclusionScanner
+		// Note: we must declare a dummy "source mapping", or the Plexus SimpleSourceInclusionScanner won't work
 		// (as per http://maven.apache.org/plugins/maven-clover-plugin/2.4/xref/org/apache/maven/plugin/clover/CloverInstrumentInternalMojo.html )
 		scanner.addSourceMapping( new SuffixMapping( "dummy", "dummy" ) );
 
