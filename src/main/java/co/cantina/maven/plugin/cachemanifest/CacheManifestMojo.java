@@ -101,6 +101,7 @@ public class CacheManifestMojo extends AbstractMojo {
 		scanner.addSourceMapping( new SuffixMapping( "dummy", "dummy" ) );
 
 		try {
+			outputManifestFile.getParentFile().mkdirs();
 			outputManifestFile.createNewFile(); // create it if it doesn't yet exist
 		} catch (IOException e) {
 			getLog().error("IOException creating manifest file: " + outputManifestFile.toString(), e);
