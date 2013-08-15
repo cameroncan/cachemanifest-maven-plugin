@@ -22,8 +22,8 @@ Cantina doesn't have a public artifactory yet - to use it, you'll need to:
                 <version>1.0</version>
                 <configuration>
                     <manifestVersion>1</manifestVersion>
-                    <inputDirectory>${basedir}/src/main/webapp</inputDirectory>
-                    <outputManifestFile>${basedir}/src/main/webapp/cache.manifest</outputManifestFile>
+		            <inputDirectory>${project.build.directory}/${project.build.finalName}</inputDirectory>
+		            <outputManifestFile>${project.build.directory}/${project.build.finalName}/cache.manifest</outputManifestFile>
                     <excludes>
                         <exclude>WEB-INF/**</exclude>
                         <exclude>**/*.manifest</exclude>
@@ -36,7 +36,7 @@ Cantina doesn't have a public artifactory yet - to use it, you'll need to:
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>compile</phase>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>generate-manifest</goal>
                         </goals>

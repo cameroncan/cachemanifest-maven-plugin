@@ -68,6 +68,12 @@ public class CacheManifestMojo extends AbstractMojo {
 	private Set<String> excludes = new HashSet<String>();
 	
 	/**
+	 * Additional Entries which are not Files
+	 * @parameter
+	 */
+	private Set<String> additionals=new HashSet<String>();
+	
+	/**
 	 * A list of resources that should be prepended by the NETWORK: token,
 	 * implying that these resources should always be served over the 
 	 * network (never cached).
@@ -144,6 +150,13 @@ public class CacheManifestMojo extends AbstractMojo {
 				String relativeFilePath = f.toString().substring(fileStripPrefix.length());
 				w.write(relativeFilePath);
 				w.write("\n");
+			}
+			if(additionals.size()>0){
+				w.write("# Additional Entries\n");
+			}
+			for(String addEntry: additionals){
+				w.write(addEntry);
+				w.write("\n");				
 			}
 			
 			// optionally, build the NETWORK: section
