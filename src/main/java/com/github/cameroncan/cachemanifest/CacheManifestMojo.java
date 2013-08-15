@@ -1,4 +1,4 @@
-package co.cantina.maven.plugin.cachemanifest;
+package com.github.cameroncan.cachemanifest;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
