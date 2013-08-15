@@ -7,6 +7,14 @@
     <packaging>maven-plugin</packaging>
     <version>1.0.1-SNAPSHOT</version>
     <name>Cache Manifest Generation Maven Plugin</name>
+    
+    <licenses>
+       <license>
+            <name>MIT LICENSE</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     <dependencies>
         <dependency>
             <groupId>org.apache.maven</groupId>
@@ -27,6 +35,20 @@
                     <source>1.5</source>
                     <target>1.5</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
